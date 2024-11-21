@@ -1,0 +1,68 @@
+#Project
+
+#Welcome
+
+#Items
+
+items=[('regular burger',5.00),('hamburger',7.00),('cheese burger',7.00),('double cheese burger',10.00),('macdouble',15.00),('big mac',15.00),('margherita pizza',10.00),('cheese n tomato',10.00),('cheese n corn',10.00),('veggie paradise',15.00),('mexican green wave',15.00),('cheese dominator',20.00),('nachos',10.00),('ginger garlic bread',5.00),('chocolate milkshake'),10.00,('vanilla milkshake',10.00),('strawberry milkshake',10.00),('butterscotch milkshake',10.00),('coca cola',5.00),('pepsi',5.00),('chocolate cocobar',5.00),('vanilla pure ice cream',5.00),('butterscotch icecone'),5.00,('blurcurrent icecream',10.00),('blackcurrent icecream',10.00),('oreo icecream',15.00)]
+
+#Initaial money
+
+money = float(input("Enter the money u have=\n"))
+ask = ('buy', 'return', 'quit') 
+cartList = [] 
+
+#User choice
+
+while ask != 'quit' or ask != 'q':
+  
+#Menu
+  
+  print(""" BURGERS\n\nregular burger.....5.00\nhamburger.....7.00\ncheese burger.....7.00\ndouble cheese burger.....10.00\nmacdouble.....15.00\nbig mac.....15.00\n\nPIZZAS\n\nmargherita pizza.....10.00\ncheese n tomato.....10.00\ncheese n corn.....10.00\nveggie paradise.....15.00\nmexican green wave.....15.00\ncheese dominator.....20.00\nnachos.....10.00\nginger garlic bread.....5.00\n\nSMOOTHIES and MILKSHAKES\n\nchocolate milkshake.....10.00\nvanilla milkshake.....10.00\nstrawberry milkshake.....10.00\nbutterscotch milkshake.....10.00\ncoca cola.....5.00\npepsi.....5.00\n\nICE CREAMS\n\nchocolate cocobar.....5.00\nvanilla pure ice cream.....5.00\nbutterscotch icecone.....5.00\nblurcurrent icecream.....10.00\nblackcurrent 
+icecream.....10.00\noreo icecream.....15.00""") 
+
+#quit
+  
+  ask = input('Do you want to buy, return or quit?\n').lower()
+  if ask == 'quit' or ask == 'q':
+    print('\nThank you for shopping with us!')
+    break
+  
+#buy
+  
+  if ask == 'buy' or ask == 'b': 
+    item = input('\nWhat item do you need?\n').lower() 
+    for i in items: 
+      if item == i[0]: 
+        print(item, 'is $', i[1]) 
+      ques = input('\nDo you want to buy this item? [Y:N]\n').lower() 
+      
+#if not enough money
+      
+      if i[1] > money: 
+        print('You do not have enough money for this item \n:(\n') 
+        break 
+      if ques == 'n': 
+        print('Sorry that you do not want that item \n:(\n') 
+        break 
+     
+#if money is sufficient
+      
+      if ques == 'y': 
+        money = money - i[1] 
+        print('\nYou now have $', money) 
+        cartList.insert(0, item) 
+        print('You have these items in your cart:\n', cartList, '\n') 
+      else: 
+        print('You entered an incorrect value :(') 
+  
+#return
+  
+  if ask == 'return' or ask == 'r': 
+    ret = input('What item do you want to return?\n') 
+    for j in cartList: 
+      if ret == j: 
+        print(j, '$',i[1])         
+        quest = input('Do you want to return this item? [Y:N]]\n').lower()
+      else: 
+        print('This item is not in your cart!\n') 
